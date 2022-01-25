@@ -64,3 +64,34 @@ auth_blueprint.add_url_rule(
     view_func=registration_view,
     methods=['POST', 'GET']
 )
+
+######
+
+list_blueprint = Blueprint('list', __name__)
+
+class ListAPI(MethodView):
+    """
+    User List Resource
+    """
+
+    def get(self): #lists all the current users
+        list=[] 
+        allusers=db.session.query(User.email) 
+        for user in allusers: #adding all the emails to the list
+            list+=user
+        responseObject = {
+            'status': 'success',
+            'message': list
+        }
+        return make_response(jsonify(responseObject)), 201
+
+
+# define the API resources
+list_view = ListAPI.as_view('list_api')
+
+# add Rules for API Endpoints
+list_blueprint.add_url_rule(
+    '/users/index',
+    view_func=list_view,
+    methods=['GET']
+)
