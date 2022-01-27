@@ -1,3 +1,3 @@
-web: gunicorn project.server:app
+web: gunicorn manage:app
 heroku ps:scale web=1
-release: python __init__.py db upgrade
+release: python manage.py db upgrade
