@@ -1,3 +1,3 @@
 web: gunicorn project.server:app
 heroku ps:scale web=1
-release: python project db upgrade
+release: db upgrade
