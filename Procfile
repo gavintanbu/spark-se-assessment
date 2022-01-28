@@ -1,3 +1,3 @@
-web: gunicorn project.server:app
+web: launch.sh
 heroku ps:scale web=1
-release: bash launch.sh
+
