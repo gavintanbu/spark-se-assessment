@@ -70,10 +70,3 @@ def test(coverage):
             COV.erase()
         return 0
     return 1
-
-os.system("export FLASK_APP=project.server")
-os.system(" export APP_SETTINGS=\"project.server.config.DevelopmentConfig\"")
-os.system("flask db init")
-os.system("flask db migrate")
-os.system("flask db upgrade")
-os.system("flask run")
